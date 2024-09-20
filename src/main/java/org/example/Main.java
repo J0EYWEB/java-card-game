@@ -6,8 +6,11 @@ public class Main {
         CardGame deck = new CardGame("Starter Deck");
 
 
-    deck.getDeck();
-    System.out.println(deck.sortDeckInNumberOrder());
+        deck.sortDeckInNumberOrder();
 
+        System.out.println("SORTED BY NUMBER \n" + deck.getDeck());
+
+        deck.sortDeckIntoSuits();
+        System.out.println("SORTED BY SUIT \n" + deck.getDeck());
     }
 }

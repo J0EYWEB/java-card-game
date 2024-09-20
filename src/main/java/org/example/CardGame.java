@@ -1,9 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class CardGame {
     private final ArrayList<Card> deckOfCards = new ArrayList<>();
@@ -32,8 +29,13 @@ public class CardGame {
        return firstCard;
     }
 
-    public ArrayList<Card> sortDeckInNumberOrder(){
+    public void sortDeckInNumberOrder(){
         deckOfCards.sort((o1, o2) -> Integer.compare(o1.getValue(), o2.getValue()));
-        return deckOfCards;
     }
+
+    public void sortDeckIntoSuits(){
+        deckOfCards.sort((o1, o2) -> CharSequence.compare(o1.getSuit(), o2.getSuit()));
+    }
+
+    
 }
