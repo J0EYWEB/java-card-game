@@ -3,9 +3,10 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        CardGame deck = new CardGame();
+        CardGame deck = new CardGame("Starter Deck");
 
 
-        System.out.println(deck.getDeckOfCards());
+        System.out.println(deck.getDeck());
+
     }
 }
