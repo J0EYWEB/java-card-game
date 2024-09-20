@@ -6,8 +6,8 @@ public class Main {
         CardGame deck = new CardGame("Starter Deck");
 
 
-        System.out.println(deck.getDeck());
-        System.out.println(deck.dealCard());
+    deck.getDeck();
+    System.out.println(deck.sortDeckInNumberOrder());
 
     }
 }
