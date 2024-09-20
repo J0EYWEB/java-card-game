@@ -22,4 +22,14 @@ public class CardGame {
         System.out.println(name);
         return deckOfCards;
     }
+
+    public Card dealCard(){
+       Card firstCard = deckOfCards.removeFirst();
+       System.out.println("Your dealt card is: ");
+       return firstCard;
+    }
+
+    public ArrayList<Card> sortDeckInNumberOrder(){
+        
+    }
 }
