@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class CardGame {
     private final ArrayList<Card> deckOfCards = new ArrayList<>();
@@ -37,5 +39,7 @@ public class CardGame {
         deckOfCards.sort((o1, o2) -> CharSequence.compare(o1.getSuit(), o2.getSuit()));
     }
 
-    
+    public void shuffleDeck(){
+        Collections.shuffle(deckOfCards);
+    }
 }

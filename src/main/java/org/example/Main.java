@@ -12,5 +12,8 @@ public class Main {
 
         deck.sortDeckIntoSuits();
         System.out.println("SORTED BY SUIT \n" + deck.getDeck());
+
+        deck.shuffleDeck();
+        System.out.println("SORTED RANDOMLY \n" + deck.getDeck());
     }
 }
