@@ -1,9 +1,6 @@
 package org.example;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Snap extends CardGame{
     private final ArrayList<Card> pileOfCards = new ArrayList<Card>();
@@ -20,8 +17,9 @@ public class Snap extends CardGame{
     }
 
     public void snapPlay() {
-        int snap = 0;
+        boolean snap = false;
         int turn = 0;
+//        Timer timer = new Timer();
         Player playerOne = Player.setPlayerOneAtGameStart();
         Player playerTwo = Player.setPlayerTwoAtGameStart();
         System.out.println(playerOne +" and " + playerTwo);
@@ -29,7 +27,8 @@ public class Snap extends CardGame{
         System.out.println("The First card on the pile is: ");
         System.out.println(pileOfCards);
 
-        while(!deckOfCards.isEmpty() && snap != 1){
+        while(!deckOfCards.isEmpty() && !snap){
+            int time = 1;
             if(turn % 2 == 0){
                 System.out.println(playerOne.getName() + " - Press 'Enter' to draw a card");
             }else{
@@ -39,7 +38,12 @@ public class Snap extends CardGame{
             createPile();
             System.out.println(pileOfCards);
             if(Objects.equals(pileOfCards.get(pileOfCards.size() - 2).getSymbol(), pileOfCards.getLast().getSymbol())){
-                snap += 1;
+
+                System.out.println("You have two Seconds to type 'Snap'!");
+                String snapSystem = userEnter.nextLine().toLowerCase(Locale.ROOT);
+                if(Objects.equals(snapSystem, "snap")){
+                    snap = true;
+                }
             }
             turn += 1;
         }
@@ -51,12 +55,4 @@ public class Snap extends CardGame{
 
     }
 
-
-
-
-
-
-
-    // deck of dealt cards needs creating
-    // when last index == second to last index then SNAP
 }
