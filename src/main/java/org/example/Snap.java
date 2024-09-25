@@ -9,8 +9,6 @@ public class Snap extends CardGame{
     private final Scanner userEnter = new Scanner(System.in);
 
 
-
-
     public Snap(String name) {
         super(name);
     }
@@ -22,6 +20,8 @@ public class Snap extends CardGame{
 
     public void snapPlay() {
         int snap = 0;
+
+
         while(!deckOfCards.isEmpty() && snap != 1){
             System.out.println("Press Enter to draw a card");
             userEnter.nextLine();

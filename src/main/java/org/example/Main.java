@@ -6,7 +6,7 @@ public class Main {
         Snap snapGame = new Snap("First game");
 
         snapGame.shuffleDeck();
-        System.out.println(snapGame.getDeck());
+//        System.out.println(snapGame.getDeck());
 
         snapGame.snapPlay();
 
