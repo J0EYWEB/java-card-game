@@ -5,11 +5,11 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class CardGame {
-    private final ArrayList<Card> deckOfCards = new ArrayList<>();
-    private final String name;
-    private final String[] suits = {"♠","♥", "♦", "♣"};
-    private final String[] symbols = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
-    private final int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+    protected final ArrayList<Card> deckOfCards = new ArrayList<>();
+    protected final String name;
+    protected final String[] suits = {"♠","♥", "♦", "♣"};
+    protected final String[] symbols = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
+    protected final int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
     public CardGame(String name) {
         this.name = name;
@@ -27,7 +27,7 @@ public class CardGame {
 
     public Card dealCard(){
        Card firstCard = deckOfCards.removeFirst();
-       System.out.println("Your dealt card is: ");
+//       System.out.println("Your dealt card is: ");
        return firstCard;
     }
 
