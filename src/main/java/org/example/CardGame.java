@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class CardGame {
@@ -26,9 +25,7 @@ public class CardGame {
     }
 
     public Card dealCard(){
-       Card firstCard = deckOfCards.removeFirst();
-//       System.out.println("Your dealt card is: ");
-       return firstCard;
+        return deckOfCards.removeFirst();
     }
 
     public void sortDeckInNumberOrder(){

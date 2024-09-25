@@ -1,11 +1,12 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Snap extends CardGame{
-    private ArrayList<Card> pileOfCards = new ArrayList<Card>();
-    private Scanner userEnter = new Scanner(System.in);
+    private final ArrayList<Card> pileOfCards = new ArrayList<Card>();
+    private final Scanner userEnter = new Scanner(System.in);
 
 
 
@@ -15,19 +16,24 @@ public class Snap extends CardGame{
     }
 
 
-    public ArrayList<Card> createPile(){
+    public void createPile(){
         pileOfCards.add(dealCard());
-        return pileOfCards;
     }
 
     public void snapPlay() {
-
-        while(!deckOfCards.isEmpty()){
+        int snap = 0;
+        while(!deckOfCards.isEmpty() && snap != 1){
             System.out.println("Press Enter to draw a card");
             userEnter.nextLine();
             createPile();
             System.out.println(pileOfCards);
+            if(pileOfCards.size() > 1){
+                if(Objects.equals(pileOfCards.get(pileOfCards.size() - 2).getSymbol(), pileOfCards.getLast().getSymbol())){
+                    snap += 1;
+                }
+            }
         }
+        System.out.println("SNAP!");
     }
 
 
