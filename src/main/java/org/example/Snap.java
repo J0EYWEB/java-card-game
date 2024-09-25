@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class Snap extends CardGame{
 
     public void snapPlay() {
         int snap = 0;
-
+       Player.setPlayersAtGameStart();
 
         while(!deckOfCards.isEmpty() && snap != 1){
             System.out.println("Press Enter to draw a card");
