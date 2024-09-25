@@ -21,20 +21,34 @@ public class Snap extends CardGame{
 
     public void snapPlay() {
         int snap = 0;
-       Player.setPlayersAtGameStart();
+        int turn = 0;
+        Player playerOne = Player.setPlayerOneAtGameStart();
+        Player playerTwo = Player.setPlayerTwoAtGameStart();
+        System.out.println(playerOne +" and " + playerTwo);
+        createPile();
+        System.out.println("The First card on the pile is: ");
+        System.out.println(pileOfCards);
 
         while(!deckOfCards.isEmpty() && snap != 1){
-            System.out.println("Press Enter to draw a card");
+            if(turn % 2 == 0){
+                System.out.println(playerOne.getName() + " - Press 'Enter' to draw a card");
+            }else{
+                System.out.println(playerTwo.getName() + " - Press 'Enter' to draw a card");
+            }
             userEnter.nextLine();
             createPile();
             System.out.println(pileOfCards);
-            if(pileOfCards.size() > 1){
-                if(Objects.equals(pileOfCards.get(pileOfCards.size() - 2).getSymbol(), pileOfCards.getLast().getSymbol())){
-                    snap += 1;
-                }
+            if(Objects.equals(pileOfCards.get(pileOfCards.size() - 2).getSymbol(), pileOfCards.getLast().getSymbol())){
+                snap += 1;
             }
+            turn += 1;
         }
-        System.out.println("SNAP!");
+        if(turn % 2 != 0){
+            System.out.println("SNAP! \n" + playerOne.getName() + " Wins!");
+        }else {
+            System.out.println("SNAP! \n" + playerTwo.getName() + " Wins!");
+        }
+
     }
 
 

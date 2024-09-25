@@ -28,15 +28,18 @@ public class Player {
         this.id = id;
     }
 
-    public static void setPlayersAtGameStart(){
+    public static Player setPlayerOneAtGameStart(){
         System.out.println("Player One, enter your name: ");
         String playerOneName = userName.nextLine();
-        Player playerOne = new Player(playerOneName, 1);
+        return new Player(playerOneName, 1);
+    }
+
+    public static Player setPlayerTwoAtGameStart(){
         System.out.println("Player Two, enter your name: ");
         String playerTwoName = userName.nextLine();
-        Player playerTwo = new Player(playerTwoName, 2);
-        System.out.println("Player One is " + playerOne.getName() + " and Player Two is " + playerTwo.getName());
+        return new Player(playerTwoName, 2);
     }
+
 
     @Override
     public String toString() {
