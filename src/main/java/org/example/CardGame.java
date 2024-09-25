@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CardGame {
-    protected final ArrayList<Card> deckOfCards = new ArrayList<>();
+    protected  static ArrayList<Card> deckOfCards = new ArrayList<>();
     protected final String name;
     protected final String[] suits = {"♠","♥", "♦", "♣"};
     protected final String[] symbols = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
@@ -20,7 +20,6 @@ public class CardGame {
     }
 
     public ArrayList<Card> getDeck() {
-        System.out.println(name);
         return deckOfCards;
     }
 
@@ -36,7 +35,7 @@ public class CardGame {
         deckOfCards.sort((o1, o2) -> CharSequence.compare(o1.getSuit(), o2.getSuit()));
     }
 
-    public void shuffleDeck(){
+    public static void shuffleDeck(){
         Collections.shuffle(deckOfCards);
     }
 }

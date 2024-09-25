@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 public class Snap extends CardGame{
     private final ArrayList<Card> pileOfCards = new ArrayList<Card>();
@@ -19,7 +20,7 @@ public class Snap extends CardGame{
     public void snapPlay() {
         boolean snap = false;
         int turn = 0;
-//        Timer timer = new Timer();
+        CardGame.shuffleDeck();
         Player playerOne = Player.setPlayerOneAtGameStart();
         Player playerTwo = Player.setPlayerTwoAtGameStart();
         System.out.println(playerOne +" and " + playerTwo);
@@ -34,23 +35,40 @@ public class Snap extends CardGame{
             }else{
                 System.out.println(playerTwo.getName() + " - Press 'Enter' to draw a card");
             }
+
             userEnter.nextLine();
             createPile();
             System.out.println(pileOfCards);
-            if(Objects.equals(pileOfCards.get(pileOfCards.size() - 2).getSymbol(), pileOfCards.getLast().getSymbol())){
 
+            if(Objects.equals(pileOfCards.get(pileOfCards.size() - 2).getSymbol(), pileOfCards.getLast().getSymbol())){
                 System.out.println("You have two Seconds to type 'Snap'!");
-                String snapSystem = userEnter.nextLine().toLowerCase(Locale.ROOT);
-                if(Objects.equals(snapSystem, "snap")){
+
+                ExecutorService executor = Executors.newSingleThreadExecutor();
+                Future<String> future = executor.submit(() -> userEnter.nextLine().toLowerCase(Locale.ROOT));
+
+                try{
+                    String snapSystem = future.get(2, TimeUnit.SECONDS);
+                    if(Objects.equals(snapSystem, "snap")){
+                        snap = true;
+                        turn += 1;
+                        System.out.println("SNAP \n" );
+                    }
+                } catch (TimeoutException e) {
                     snap = true;
+                    System.out.println("Time's up!");
+
+                } catch (Exception e){
+                    System.err.println("An error occurred: " + e.getMessage());
+                }finally {
+                    executor.shutdownNow();
                 }
             }
             turn += 1;
         }
-        if(turn % 2 != 0){
-            System.out.println("SNAP! \n" + playerOne.getName() + " Wins!");
+        if(turn % 2 == 0){
+            System.out.println(playerOne.getName() + " Wins!");
         }else {
-            System.out.println("SNAP! \n" + playerTwo.getName() + " Wins!");
+            System.out.println(playerTwo.getName() + " Wins!");
         }
 
     }
