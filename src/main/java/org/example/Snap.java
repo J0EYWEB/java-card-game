@@ -70,7 +70,6 @@ public class Snap extends CardGame{
         }else {
             System.out.println(playerTwo.getName() + " Wins!");
         }
-        userEnter.close();
 
     }
 

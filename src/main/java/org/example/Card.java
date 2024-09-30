@@ -25,10 +25,23 @@ public class Card {
 
     @Override
     public String toString() {
-        return "\n Card[" +
-                "suit='" + suit + '\'' +
-                ", symbol='" + symbol + '\'' +
-                ", value=" + value +
-                ']' + "\n";
+        if (symbol.length() > 1){
+        return "\n ┌─────────┐" +
+                "\n │" + symbol + "       │" +
+                "\n │         │" +
+                "\n │    " + suit + "    │" +
+                "\n │         │" +
+                "\n │       " + symbol + "│" +
+                "\n └─────────┘ \n";
+        } else {
+            return "\n ┌─────────┐" +
+                    "\n │" + symbol + "        │" +
+                    "\n │         │" +
+                    "\n │    " + suit + "    │" +
+                    "\n │         │" +
+                    "\n │        " + symbol + "│" +
+                    "\n └─────────┘ \n";
+        }
+
     }
 }
