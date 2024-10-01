@@ -33,4 +33,4 @@ A simple snap card game built with Java. This project demonstrates the implement
 - Players take turns pressing enter to draw a card
 - When a card matches the previous one, the play must type 'snap' within 2 seconds.
 - If the player does not type 'snap' within 2 seconds, the opponent wins automatically.
-- if 'snap' is not typed correctly or the enter key is accidently hit before any characters are typed, the game continues.
+- if 'snap' is not typed correctly or the enter key is accidentally hit before any characters are typed, the game continues.

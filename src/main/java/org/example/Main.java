@@ -10,36 +10,30 @@ public class Main {
 
         while(!Objects.equals(option, "2")) {
 
-
-
             while (!Objects.equals(option, "1") && !Objects.equals(option, "2")) {
-                System.out.println("    ___   ________   ___      ___  ________          ________   ________   ________   ________          ________   ________   _____ ______    _______    ________      \n" +
-                        "   |\\  \\ |\\   __  \\ |\\  \\    /  /||\\   __  \\        |\\   ____\\ |\\   __  \\ |\\   __  \\ |\\   ___ \\        |\\   ____\\ |\\   __  \\ |\\   _ \\  _   \\ |\\  ___ \\  |\\   ____\\     \n" +
-                        "   \\ \\  \\\\ \\  \\|\\  \\\\ \\  \\  /  / /\\ \\  \\|\\  \\       \\ \\  \\___| \\ \\  \\|\\  \\\\ \\  \\|\\  \\\\ \\  \\_|\\ \\       \\ \\  \\___| \\ \\  \\|\\  \\\\ \\  \\\\\\__\\ \\  \\\\ \\   __/| \\ \\  \\___|_    \n" +
-                        " __ \\ \\  \\\\ \\   __  \\\\ \\  \\/  / /  \\ \\   __  \\       \\ \\  \\     \\ \\   __  \\\\ \\   _  _\\\\ \\  \\ \\\\ \\       \\ \\  \\  ___\\ \\   __  \\\\ \\  \\\\|__| \\  \\\\ \\  \\_|/__\\ \\_____  \\   \n" +
-                        "|\\  \\\\_\\  \\\\ \\  \\ \\  \\\\ \\    / /    \\ \\  \\ \\  \\       \\ \\  \\____ \\ \\  \\ \\  \\\\ \\  \\\\  \\|\\ \\  \\_\\\\ \\       \\ \\  \\|\\  \\\\ \\  \\ \\  \\\\ \\  \\    \\ \\  \\\\ \\  \\_|\\ \\\\|____|\\  \\  \n" +
-                        "\\ \\________\\\\ \\__\\ \\__\\\\ \\__/ /      \\ \\__\\ \\__\\       \\ \\_______\\\\ \\__\\ \\__\\\\ \\__\\\\ _\\ \\ \\_______\\       \\ \\_______\\\\ \\__\\ \\__\\\\ \\__\\    \\ \\__\\\\ \\_______\\ ____\\_\\  \\ \n" +
-                        " \\|________| \\|__|\\|__| \\|__|/        \\|__|\\|__|        \\|_______| \\|__|\\|__| \\|__|\\|__| \\|_______|        \\|_______| \\|__|\\|__| \\|__|     \\|__| \\|_______||\\_________\\\n" +
-                        "                                                                                                                                                           \\|_________|\n" +
-                        "                                                                                                                                                                       \n" +
-                        "                                                                                                                                                                       ");
+                MenuHeadings.mainMenuHeading();
+
                 System.out.println("Pick a card game to play: \n 1. Snap \n 2. Exit");
                 option = user.nextLine();
             }
             if (Objects.equals(option, "1")) {
-                System.out.println(" _____  _   _   ___  ______ \n" +
-                        "/  ___|| \\ | | / _ \\ | ___ \\\n" +
-                        "\\ `--. |  \\| |/ /_\\ \\| |_/ /\n" +
-                        " `--. \\| . ` ||  _  ||  __/ \n" +
-                        "/\\__/ /| |\\  || | | || |    \n" +
-                        "\\____/ \\_| \\_/\\_| |_/\\_|");
+                String gameMode = "";
 
-                Snap snapGame = new Snap("First game");
-                CardGame.shuffleDeck();
-                snapGame.snapPlay();
+                MenuHeadings.snapMenuHeading();
+                Snap snapGame = new Snap("Snap");
+
+                while(!Objects.equals(gameMode, "1") && !Objects.equals(gameMode, "2")){
+
+                    System.out.println("Pick your mode: \n 1. One player \n 2. Two Player");
+                    gameMode = user.nextLine();
+                }
+                if(Objects.equals(gameMode, "1")){
+                    snapGame.snapPlayOnePlayer();
+                }else{
+                    snapGame.snapPlay();
+                }
 
                 String playAgain = "";
-
                 do {
                     System.out.println("Do you want to play again? \n 1. Yes \n 2. No \n 3. Exit");
                     playAgain = user.nextLine();
